@@ -1,0 +1,410 @@
+<!DOCTYPE html> 
+
+<html> 
+
+<head> 
+
+<title>CanSat23</title> 
+
+</head> 
+
+<body> 
+
+<p style="color:black";"font-family:cursive"><center><H1>CanSat Horus 2023</H1></center></p> 
+
+  
+
+  
+
+  
+
+  
+
+<div class="container"> 
+
+<img src="cansat.png" width="400px" height="380px"> 
+
+<div style=" margin:1% ; height:350px ;width:50%; float:right"> 
+
+    <h2>Definicion</h2> 
+
+    <p>Un CanSat es una simulación de un satélite real, integrado dentro del volumen y la forma de una lata.</p> 
+
+</div> 
+
+</div> 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+ 
+<tr> 
+
+<ul> 
+
+<li><a href="#seccion1">Sección 1</a></li> 
+
+<li><a href="#seccion2">Misiones</a></li> 
+
+    <ol> 
+
+<li><a href="#subseccion1">Mision 1</a></li> 
+
+<li><a href="#subseccion2">Mision 2</a></li> 
+
+</ol> 
+
+<li><a href="#seccion3">Diseño Mecánico y Estructural</a></li> 
+
+    <ol> 
+
+<li><a href="#subseccion1">DISEÑO DEL PARACAÍDAS</a></li> 
+
+<li><a href="#subseccion2">DISEÑO DE LA ANTENA</a></li> 
+
+</ol> 
+
+</ul> 
+
+</tr> 
+
+  
+
+<h2 ><a name="seccion1">Sección 1</h2> 
+
+<p></p> 
+
+  
+
+<h2> <a name="seccion2">Misiones</h2> 
+
+<p>Hemos seguido la base del concurso y las especificaciones, en las cuales tenemos que medir presión y temperatura, para ello que hemos escogido el sensor BMP 280 que irá conectado a un Arduino Mega mediante la conexión del bus I2/C. </p> 
+
+<div class="container"> 
+
+    <h3> <a name="subseccion1">Mision 1</h3> 
+
+<img src="BMP280.png" width="480px" height="380px"> 
+
+<div style=" margin:1% ; height:350px ;width:50%; float:right"> 
+
+     
+
+   <p>El funcionamiento del bus I2C es el siguiente:</br> 
+
+   Cuando queremos transmitir información de un circuito electrónico (o chip) lo hacemos por medio deel Bus I2C.  
+
+       El protocolo de circuito integrado (I2C) es un protocolo destinado a permitir que varios circuitos integrados digitales «esclavos» («chips») se comuniquen con uno o más chips «maestros». El bus I2C requiere únicamente dos cables para su funcionamiento, uno para la señal de reloj (CLK) y otro para el envío de datos (SDA).   
+
+       En el bus cada dispositivo dispone de una dirección, que se emplea para acceder a los dispositivos de forma individual. Esta dirección puede ser fijada por hardware (en cuyo caso, frecuentemente, se pueden modificar los últimos 3 bits mediante jumpers o interruptores) o totalmente por software. </br> 
+
+       Las especificaciones del sensor son las siguientes: </br> 
+
+   <tr> 
+
+<ul> 
+
+      <li>Digital interfaz de dos cables (I2C) </li> 
+
+      <li>Amplio rango de medición de presión barométrica </li> 
+
+      <li>Ultra-bajo consumo de energía </li> 
+
+      <li>Bajo ruido </li> 
+
+      <li>Completamente calibrado </li> 
+
+      <li>Medición de temperatura incluida </li> 
+
+      <li>Ultraplano y pequeño tamaño </li> 
+
+      <li>Alimentación: 1.8V – 3.6V </li> 
+
+      <li>Rango de medición: 300 – 1100hPa </li> 
+
+      <li>Velocidad del protocolo máxima: 3.4 MHz. </li> 
+
+  
+
+</ul> 
+
+   </tr> 
+
+   </p> 
+
+</div> 
+
+ 
+<h3> <a name="subseccion2">Mision 2</h3> 
+ <img src="neo.png" width="480px" height="380px"> 
+
+<div style=" margin:1% ; height:350px ;width:50%; float:right"> 
+
+
+<p>La misión secundaria elegida por parte del equipo ha sido incorporar un sensor GPS NEO 6 y un lector de tarjetas microSD y además los datos estarán siendo enviados por radiofrecuencia APC220-43 en todo momento. </br></p>
+
+ Hemos realizado las conexiones que se describen a continuación para el GPX: </br>
+
+<tr> 
+
+<ul> 
+
+      <li>pin 3.3V del Arduino UNO al pin Vcc del módulo GPS. </li> 
+
+      <li>pin GND del Arduino UNO al pin GND del módulo GPS.</li> 
+
+      <li>pin digital 4 del Arduino UNO al pin Tx del módulo GPS. </li> 
+
+      <li>pin digital 3 del Arduino UNO al pin Rx del módulo GPS.  </li> 
+
+</ul> 
+
+   </tr>
+</div>
+</div>
+ </br>
+ </br>
+<div class="container"> 
+
+<img src="sd.png" width="470px" height="380px"> 
+<div style=" margin:1% ; height:350px ;width:50%; float:right"> 
+<p>Los datos serán recogidos en una tarjeta microSD que ira acoplada a la capsula.  </br>
+La comunicación de la memoria es por SPI pero trabajan con 3.3V, para utilizarlo con Arduino necesitamos módulos externos que aparte de tener el socket traen los componentes necesarios para adaptar los voltajes a TTL y poder conectarlo de forma fácil a nuestro Arduino. 
+
+Para este tutorial podemos usar cualquiera de estos dos módulos: 
+
+Modulo Micro SD: nos permite insertar una memoria Micro SD que son las más comunes en el mercado, el modulo se puede alimentar con 3.3V o 5V usando los pines respectivos. </p>
+</div>
+</div>
+
+</br>
+ </br>
+<div class="container"> 
+
+<img src="antena.png" width="480px" height="380px"> 
+<div style=" margin:1% ; height:350px ;width:50%; float:right">
+ 
+<p>El módulo de conexión inalámbrica es la radio APC220-43</br>
+Este módulo de comunicación inalámbrica tiene la ventaja de ser configurable, mientras que en otros módulos comerciales la frecuencia de oscilación del transmisor y el resonador del receptor estan determinados por el inductor y capacitor usados (valores fijos). Permite ajustar varios parámetros tanto los mencionados, como tener la ventaja de funcionar tanto de transmisor y receptor, permitiendo una comunicación bidireccional.  </p>
+
+ Algunas de las características que posee el módulo son los siguientes:  </br>
+
+<tr> 
+
+<ul> 
+
+      <li> Frecuencia de trabajo: 418 MHz a 455 MHz.  </li> 
+      <li>Alimentación: 3.3V a 5.5V</li> 
+      <li> Corriente consumida: 25 a 35 mA.  </li> 
+      <li>Rango de transmisión: Hasta 1000m (a 2400 bps).  </li>
+      <li>Interfaz de comunicación: UART/TTL  </li>
+      <li>Rango de baudios: 1200 a 19200 bps. </li>
+      <li>Buffer receptor: 256 bytes. </li>
+      <li>Temperatura de trabajo: -20°C a +70°C. </li>
+      <li>Cantidad de canales: Más de 100. </li>
+      <li>Modulación: GFSK. </li>
+      <li>Potencia de señal de salida: 20 mW </li>
+      <li>Los módulos APC220 siempre constan de:  </li>
+      <li> 2 módulos receptor/transmisor APC220  </li>
+      <li>1 convertidor UART/TTL a RS232. </li>
+
+</ul> 
+   </tr>
+  </div>
+</div> 
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+
+<h2> <a name="seccion3">Diseño Mecánico y Estructural</h2> 
+
+<p>Para diseñar nuestras piezas hemos utilizado el software libre FreeCad : </br>
+
+Diseño preliminar de la cápsula,</br></p> 
+
+<img src="antena.png" width="480px" height="380px"> 
+<img src="antena.png" width="480px" height="380px"> 
+<img src="antena.png" width="480px" height="380px"> 
+El resultado en una de las pruebas se encuentra en la siguiente imagen: </br>
+<img src="antena.png" width="480px" height="380px"> 
+
+ 
+
+    <h3> <a name="subseccion1">DISEÑO DEL PARACAÍDAS</h3> 
+
+        <p>Hemos diseñado cuatro paracaídas octogonales utilizando un simulador online.--> https://www.translatorscafe.com/unit-converter/enUS/calculator/parachute-size/shape=hexagon&dr=4.5&dru=m/s&rm=120&rmu=g&dsp=20 Las velocidades de descenso, que son 5, 6, 8, 10. </p> 
+
+  
+
+    <h3> <a name="subseccion2">DISEÑO DE LA ANTENA</h3> 
+
+        <p>21321414</p> 
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+</body> 
+
+</html> 
